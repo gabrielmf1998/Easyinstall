@@ -19,12 +19,13 @@ Nada, logo após instalar seu Windows 11, pode executa-lo em modo ADM ⚠️ par
 ### Conversão Executável
 
 - Convertíveis em `.exe`
-- Ferramenta recomendada: 
-[ps2exe](https://github.com/MScholtes/PS2EXE).
+- [Ferramenta recomendada: ps2exe](https://github.com/MScholtes/PS2EXE)
 
 ## Aviso de Segurança ⚠️
 
-[Texto alternativo](https://i.postimg.cc/25fKhx9K/image.png)
+![Alerta](https://i.postimg.cc/25fKhx9K/image.png)
+
+
   
 É apenas um aviso do Windows Defender 👌  
 A ferramenta vai continuar funcionando normalmente.
