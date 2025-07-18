@@ -23,7 +23,7 @@ Nada, logo após instalar seu Windows 11, pode executa-lo em modo ADM ⚠️ par
 
 ## Aviso de Segurança ⚠️
 
-![Alerta](https://i.postimg.cc/25fKhx9K/image.png)
+![Alerta](https://i.ibb.co/BvP0Lk5/image.png)
 
 
   
