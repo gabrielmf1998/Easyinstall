@@ -1,18 +1,13 @@
-## Windows Essentials 📒
+## EasyInstall 🟪
+
+![Texto alternativo](https://i.ibb.co/kCG7xyw/Captura-de-tela-2025-08-02-195056.png)
 
 Esse programa que fiz tem o objetivo de baixar e instalar outros programas da internet.
 Isso é ótimo para máquinas recém formatadas, onde se torna útil instalar vários programas ao mesmo tempo.  
 
-Não somente isso, mas cada botão é configurável para qualquer coisa, por exemplo executar scripts ou comandos, podendo se adaptar a qualquer automatização.
+## Interface Simples
 
-## Interface GUI ✅
-
-Meu programa tem interface GUI simples feito com System.Windows.Forms.
-Utilizei PowerShell Pro Tools disponível no VisualStudioCode para formatação, dimenção e tamanho das janelas.
-
-## Que programas ele tem atualmente? ❓
-
-Segue lista completa:  
+Meu programa tem interface simples no terminal
   
 ![Texto alternativo](https://i.postimg.cc/5tKHcHVf/Programas.png)
 
@@ -25,10 +20,4 @@ Segue lista completa:
 
 - Convertíveis em `.exe`
 - Ferramenta recomendada: [ps2exe](https://github.com/MScholtes/PS2EXE).
-
-## Aviso de Segurança ⚠️
-
-![Texto alternativo](https://i.postimg.cc/25fKhx9K/image.png)
-  
-É apenas um aviso do Windows Defender 👌  
-A ferramenta vai continuar funcionando normalmente.
+- Porém na parte de Releases, já se encontra a ultima versão.
