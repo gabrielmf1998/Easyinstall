@@ -8,8 +8,6 @@ Isso é ótimo para máquinas recém formatadas, onde se torna útil instalar v�
 ## Interface Simples
 
 Meu programa tem interface simples no terminal
-  
-![Texto alternativo](https://i.postimg.cc/5tKHcHVf/Programas.png)
 
 ### Conformidade e Compatibilidade
 
