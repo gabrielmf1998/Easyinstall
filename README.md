@@ -8,7 +8,7 @@ Isso é ótimo para máquinas recém formatadas, onde se torna útil instalar v�
 ### Conformidade e Compatibilidade
 
 - Scripts escritos em PowerShell 5.1
-- Apenas Windows 10/11+ ou Server 2019/2025+
+- Apenas Windows 10/11+ ou Server 2022/2025+
 
 ### Conversão Executável
 
