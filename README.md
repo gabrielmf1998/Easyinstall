@@ -5,10 +5,6 @@
 Esse programa que fiz tem o objetivo de baixar e instalar outros programas da internet.
 Isso é ótimo para máquinas recém formatadas, onde se torna útil instalar vários programas ao mesmo tempo.  
 
-## Interface Simples
-
-Meu programa tem interface simples no terminal
-
 ### Conformidade e Compatibilidade
 
 - Scripts escritos em PowerShell 5.1
