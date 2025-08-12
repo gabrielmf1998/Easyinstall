@@ -5,6 +5,35 @@
 Esse programa que fiz tem o objetivo de baixar e instalar outros programas da internet.
 Isso é ótimo para máquinas recém formatadas, onde se torna útil instalar vários programas ao mesmo tempo.  
 
+### Que programas ele possui❓
+- Steam
+- Discord
+- Telegram
+- Chrome
+- Drivers Nvidia
+- Drivers AMD
+- Spotify
+- Strimeo
+- VLC
+- Parsec
+- 7zip
+- Msi Aftaerburner
+- OperaGX
+- Genshin Impact
+- Radmin
+- VMWare ⚠️
+- FlameShot
+- PrismaLauncher
+- Pacote Office 2024
+
+### Que ferramentas ele tem❓
+- [VS AIO](https://github.com/abbodi1406/vcredist).
+- [Ativador MSA **Windows/Office**](https://github.com/massgravel/Microsoft-Activation-Scripts).
+- [Winhance](https://github.com/memstechtips/Winhance)
+- [StartAllBack](https://github.com/Aetherinox/utility-startallback)
+- Desativa Hibernação/Economia de Energia
+- Desativa Windows Update/Defender/Firewal **PERMANENTEMENTE** ⚠️
+
 ### Conformidade e Compatibilidade
 
 - Scripts escritos em PowerShell 5.1
