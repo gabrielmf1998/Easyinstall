@@ -31,8 +31,10 @@ Isso é ótimo para máquinas recém formatadas, onde se torna útil instalar v�
 - [Ativador MSA **Windows/Office**](https://github.com/massgravel/Microsoft-Activation-Scripts).
 - [Winhance](https://github.com/memstechtips/Winhance)
 - [StartAllBack](https://github.com/Aetherinox/utility-startallback)
-- Desativa Hibernação/Economia de Energia
-- Desativa Windows Update/Defender/Firewal **PERMANENTEMENTE** ⚠️
+- Ativar TRIM NVME/SSD
+- Desativar ReCall
+- Desativar Hibernação/Economia de Energia
+- Desativar Windows Update/Defender/Firewal **PERMANENTEMENTE** ⚠️
 
 ### Conformidade e Compatibilidade
 
