@@ -17,7 +17,7 @@ Isso é ótimo para máquinas recém formatadas, onde se torna útil instalar v�
 - VLC
 - Parsec
 - 7zip
-- Msi Aftaerburner
+- Msi Afterburner
 - OperaGX
 - Genshin Impact
 - Radmin
