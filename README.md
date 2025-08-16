@@ -7,7 +7,7 @@ Isso é ótimo para máquinas recém formatadas, onde se torna útil instalar v�
 
 ### Windows 10/11
 Pode abrir o powershell e executar diretamente:
-`irm https://github.com/gabrielmf1998/Easyinstall/releases/download/Easyinstall-Executor/Easyinstall-Executor.ps1 | iex`
+<pre> ```irm https://github.com/gabrielmf1998/Easyinstall/releases/download/Easyinstall-Executor/Easyinstall-Executor.ps1 | iex ``` </pre>
 
 ### Que programas ele possui❓
 - Steam
