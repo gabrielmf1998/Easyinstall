@@ -3,7 +3,11 @@
 ![Texto alternativo](https://i.ibb.co/kCG7xyw/Captura-de-tela-2025-08-02-195056.png)
 
 Esse programa que fiz tem o objetivo de baixar e instalar outros programas da internet.
-Isso é ótimo para máquinas recém formatadas, onde se torna útil instalar vários programas ao mesmo tempo.  
+Isso é ótimo para máquinas recém formatadas, onde se torna útil instalar vários programas ao mesmo tempo.
+
+### Windows 10/11
+Pode abrir o powershell e executar diretamente:
+`irm https://github.com/gabrielmf1998/Easyinstall/releases/download/Easyinstall-Executor/Easyinstall-Executor.ps1 | iex`
 
 ### Que programas ele possui❓
 - Steam
@@ -32,7 +36,7 @@ Isso é ótimo para máquinas recém formatadas, onde se torna útil instalar v�
 - [Winhance](https://github.com/memstechtips/Winhance)
 - [StartAllBack](https://github.com/Aetherinox/utility-startallback)
 - Ativar TRIM NVME/SSD
-- Desativar ReCall
+- Desativar Recall
 - Desativar Hibernação/Economia de Energia
 - Desativar Windows Update/Defender/Firewal **PERMANENTEMENTE** ⚠️
 
