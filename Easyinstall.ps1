@@ -1,28 +1,51 @@
-﻿Write-Host "Iniciando..." -ForegroundColor Magenta
-#Vai checar se o usuário executou como Administrador
-Add-Type -AssemblyName System.Windows.Forms
-$currentUser = New-Object Security.Principal.WindowsPrincipal([Security.Principal.WindowsIdentity]::GetCurrent())
-$isAdmin = $currentUser.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
-
-if (-not $isAdmin) {
-    Add-Type -AssemblyName System.Windows.Forms
-    $mensagem = "Este script precisa ser executado com privilégios de Administrador.`n`nPor favor, clique com o botão direito no arquivo e selecione 'Executar como Administrador'."
-    $titulo = "Erro de Permissão!"
-    $botoes = [System.Windows.Forms.MessageBoxButtons]::OK
-    $icone = [System.Windows.Forms.MessageBoxIcon]::Error
-    [System.Windows.Forms.MessageBox]::Show($mensagem, $titulo, $botoes, $icone) | Out-Null
-    exit
+﻿#Impede usuário de ficar clicando igual um idiota no script e congelando ele
+Add-Type @"
+using System;
+using System.Runtime.InteropServices;
+public class ConsoleHelper {
+    [DllImport("kernel32.dll", SetLastError=true)]
+    public static extern IntPtr GetStdHandle(int nStdHandle);
+    [DllImport("kernel32.dll")]
+    public static extern bool GetConsoleMode(IntPtr hConsoleHandle, out int lpMode);
+    [DllImport("kernel32.dll")]
+    public static extern bool SetConsoleMode(IntPtr hConsoleHandle, int dwMode);
 }
+"@
+$handle = [ConsoleHelper]::GetStdHandle(-10)
+$mode = 0
+[ConsoleHelper]::GetConsoleMode($handle, [ref]$mode) | Out-Null
+$newMode = $mode -band (-bnot 0x40)
+[ConsoleHelper]::SetConsoleMode($handle, $newMode) | Out-Null
 
+#Vai ajustar console para preto
+$console = $Host.UI.RawUI
+$console.BackgroundColor = 'Black'
+$console.ForegroundColor = 'White'
+Clear-Host
+
+Write-Host "Iniciando..." -ForegroundColor Magenta
+
+#Deixa liberado TLS1.2 para download
+[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+
+#Remove animação de download
+$ProgressPreference = 'SilentlyContinue'
+
+#Adiciona Forms
+Add-Type -AssemblyName System.Windows.Forms
+
+#Toca Musica durante o menu
 $player = New-Object System.Media.SoundPlayer
-            $URLMUSICA = "https://www.dropbox.com/scl/fi/4sf1zp1xplydavbmzrr68/MENU-mp3cut.net.wav?rlkey=5z1y6usen85vgugxoyihkgkqm&st=uiefb83q&dl=1"
+            $URLMUSICA = "https://www.dropbox.com/scl/fi/d7emcrmx6blei3d4megut/DATAHATE-Slowed-mp3cut.net.wav?rlkey=ynbls5up9ucu30pwuoc9u2jmz&st=nq868cdu&dl=1"
             Invoke-WebRequest -Uri "$URLMUSICA" -OutFile "$env:TEMP\MENU.wav"
             $player.SoundLocation = "$env:TEMP\MENU.wav"
             $player.Load()
             $player.PlayLooping()
 
+#Vai ajustar o tamanho da janela
+[Console]::SetWindowSize(100, 30)
 
-
+#Inicia menu do Script EasyInstall
 while ($true) {
     [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
     Clear-Host
@@ -37,6 +60,7 @@ Write-Host $asciiArt -ForegroundColor Magenta
 Write-Host "By gabrielmf1998" -ForegroundColor Cyan
 Write-Host ""
 
+#Conjunto de Links para downloa da Internet
 $7zipurl = "https://www.7-zip.org/a/7z2405-x64.exe"
 $7zipurlbackup = "https://www.dropbox.com/scl/fi/mxzy930l435b2nekh7jb3/7zip.exe?rlkey=vlfa2ewujvoejrjjsnim233xo&st=8kci0vmd&dl=1"
 $discordurlbackup = "https://www.dropbox.com/scl/fi/iexl5meb6e4uhace8r60h/DiscordSetup.exe?rlkey=66szuqcji8crzhd49e6s85xe6&st=xevxz12e&dl=1"
@@ -69,28 +93,27 @@ $jogochinesvirus = "https://www.dropbox.com/scl/fi/dmigy8i7qzwflanmcr7s5/Genshin
 $startallbackurl = "https://www.dropbox.com/scl/fi/psjk13pklejcib0lfg3xz/StartAllBack_3.9.12_setup.exe?rlkey=npx0f72p0ojbj5a5uss071il2&st=5ojrfqye&dl=1"
 $Prismaurl = "https://www.dropbox.com/scl/fi/d690yek0trux9acod88iw/PrismLauncher-Windows-MSVC-Setup-9.4.exe?rlkey=zywtm6epmhc1kjd91b96rd30n&st=mypci9d6&dl=1"
 
-    Write-Host "Principais" -ForegroundColor Magenta
-    Write-Host ("{0,-50} {1}" -f "1 - Steam", "2 - Discord")
-    Write-Host ("{0,-50} {1}" -f "3 - Telegram", "4 - Chrome")
-    Write-Host "Drivers" -ForegroundColor Magenta
-    Write-Host ("{0,-50} {1}" -f "5 - Nvidia", "6 - AMD")
-    Write-Host "Entreterimento" -ForegroundColor Magenta
-    Write-Host ("{0,-50} {1}" -f "7 - Spotify", "8 - Strimeo")
-    Write-Host ("{0,-50} {1}" -f "9 - VLC Player", "10 - Parsec")
-    Write-Host "Ferramentas" -ForegroundColor Magenta
-    Write-Host ("{0,-50} {1}" -f "11 - 7zip", "12 - VisualStudio AIO")
-    Write-Host ("{0,-50} {1}" -f "13 - Ativar Windows 10/11/Office", "14 - Winhance")
-    Write-Host ("{0,-50} {1}" -f "15 - StartAllBack", "16 - Instalar Msi Afterburner")
-    Write-Host ("{0,-50} {1}" -f "17 - Desativar Hibernação/Economia de Energia", "18 - Ativar TRIM NVME/Desabilitar Sysmain")
-    Write-Host ("{0,-50} {1}" -f "19 - Desativar Defender/Firewall/Update", "00 - NULL") 
-    Write-Host "Virus" -ForegroundColor Magenta
-    Write-Host ("{0,-50} {1}" -f "20 - OperaGX", "21 - Genshin Impact") 
-    Write-Host "Outros" -ForegroundColor Magenta
-    Write-Host ("{0,-50} {1}" -f "22 - Radmin", "23 - VMWare")
-    Write-Host ("{0,-50} {1}" -f "24 - FlameShot", "25 - PrismaLauncher")
-    Write-Host ("{0,-50} {1}" -f "26 - Pacote Office 2024", "00 - NULL")   
+#Exibe na tela o menu em colunas
+Write-Host "Programas" -ForegroundColor Magenta
+Write-Host ("{0,0} | {1,-25} {2,0} | {3,-25} {4,0} | {5,-25}" -f 1,"Steam",2,"Discord",3,"Telegram")
+Write-Host ("{0,0} | {1,-25} {2,0} | {3,-25} {4,0} | {5,-25}" -f 4,"Chrome",5,"Nvidia",6,"AMD")
+Write-Host ("{0,0} | {1,-25} {2,0} | {3,-25} {4,0} | {5,-25}" -f 7,"Spotify",8,"Stremio",9,"VLC Player")
+Write-Host ("{0,0} | {1,-25} {2,0} | {3,-25} {4,0} | {5,-25}" -f "A","Parsec","K","OperaGX","L","Genshin Impact")
+Write-Host ("{0,0} | {1,-25} {2,0} | {3,-25} {4,0} | {5,-25}" -f "M","Radmin","N","VMWare","O","FlameShot")
+Write-Host ("{0,0} | {1,-25} {2,0} | {3,-25} {4,0} | {5,-25}" -f "P","PrismaLauncher","Q","Pacote Office 2024","B","7Zip")
+Write-Host ("{0,0} | {1,-25} {2,0} | {3,-25} {4,0} | {5,-25}" -f "G","MSI Afterburner"," "," "," "," ")
+Write-Host "`nFerramentas" -ForegroundColor Magenta
+Write-Host ("{0,0} | {1,-25} {2,0} | {3,-25} {4,0} | {5,-25}" -f "R","Desativar Recall","C","VisualStudio AIO","D","Ativar Windows 10/11/Office")
+Write-Host ("{0,0} | {1,-25} {2,0} | {3,-25} {4,0} | {5,-25}" -f "E","Winhance","F","StartAllBack","J","Desativar DFW")
+Write-Host ("{0,0} | {1,-25} {2,0} | {3,-25} {4,0} | {5,-25}" -f "H","Desativar Hibernação","I","Ativar TRIM"," "," ")
+#Write-Host ("{0,0} | {1,-25} {2,0} | {3,-25} {4,0} | {5,-25}" -f " "," "," "," "," "," ")
+
+#Usuário escolher a opção
     Write-Host ""
-    $escolha = Read-Host "Digite uma opção "
+    Write-Host "         Digite uma opção no seu teclado [1,2,3...A,B,C]" -ForegroundColor Green
+    Write-Host ""
+    $tecla = [Console]::ReadKey($true)
+    $escolha = $tecla.KeyChar
     switch ($escolha) {
         "1" {
             Invoke-WebRequest -Uri "$steamurl" -OutFile "$env:TEMP\SteamInstall.exe"
@@ -109,6 +132,7 @@ $Prismaurl = "https://www.dropbox.com/scl/fi/d690yek0trux9acod88iw/PrismLauncher
             Start-Process "$env:TEMP\Chrome.exe"
         }
         "5" {
+            Write-Host "[Baixando...]" -ForegroundColor Magenta
             Invoke-WebRequest -Uri "$drivernvidiaurl" -OutFile "$env:TEMP\Nvidia.exe"
                 if (-Not (Test-Path "$env:TEMP\Nvidia.exe")) {
                     Write-Host "Link principal caiu, usando backup DropBox..." -ForegroundColor Yellow
@@ -117,6 +141,7 @@ $Prismaurl = "https://www.dropbox.com/scl/fi/d690yek0trux9acod88iw/PrismLauncher
             Start-Process "$env:TEMP\Nvidia.exe"
         }
         "6" {
+            Write-Host "[Baixando...]" -ForegroundColor Magenta
             Invoke-WebRequest -Uri "$driveramdurl" -OutFile "$env:TEMP\AMD.exe"
                 if (-Not (Test-Path "$env:TEMP\AMD.exe")) {
                     Write-Host "Link principal caiu, usando backup DropBox..." -ForegroundColor Yellow
@@ -144,7 +169,7 @@ $Prismaurl = "https://www.dropbox.com/scl/fi/d690yek0trux9acod88iw/PrismLauncher
             Invoke-WebRequest -Uri "$vlcurlbackup" -OutFile "$env:TEMP\VideoLC.exe"
             Start-Process "$env:TEMP\VideoLC.exe"
         }
-        "10" {
+        "a" {
             Invoke-WebRequest -Uri "$parsecurl" -OutFile "$env:TEMP\Parsec.exe"
                 if (-Not (Test-Path "$env:TEMP\Parsec.exe")) {
                     Write-Host "Link principal caiu, usando backup DropBox..." -ForegroundColor Yellow
@@ -152,7 +177,7 @@ $Prismaurl = "https://www.dropbox.com/scl/fi/d690yek0trux9acod88iw/PrismLauncher
                     }
             Start-Process "$env:TEMP\Parsec.exe"
         }
-        "11" {
+        "b" {
             Invoke-WebRequest -Uri "$7zipurl" -OutFile "$env:TEMP\7zip.exe"
                 if (-Not (Test-Path "$env:TEMP\7zip.exe")) {
                     Write-Host "Link principal caiu, usando backup DropBox..." -ForegroundColor Yellow
@@ -160,22 +185,23 @@ $Prismaurl = "https://www.dropbox.com/scl/fi/d690yek0trux9acod88iw/PrismLauncher
                     }
             Start-Process "$env:TEMP\7zip.exe"
         }  
-        "12" {
+        "c" {
             Invoke-WebRequest -Uri $visualurl -OutFile "$env:TEMP\VRCAIO.exe"
             Start-Process "$env:TEMP\VRCAIO.exe"
         }
-        "13" {
+        "d" {
             irm https://get.activated.win | iex
         }
-        "14" {
+        "e" {
             Invoke-WebRequest -Uri "$winhanceurl" -OutFile "$env:TEMP\Winhance.exe"
             Start-Process "$env:TEMP\Winhance.exe"
         }
-        "15" {
+        "f" {
             Invoke-WebRequest -Uri "$startallbackurl" -OutFile "$env:TEMP\StartAllBack.exe"
             Start-Process "$env:TEMP\StartAllBack.exe"
         }
-        "16" {
+        "g" {
+            Write-Host "[Baixando...]" -ForegroundColor Magenta
             Invoke-WebRequest -Uri "$msiafterburnerurl" -OutFile "$env:TEMP\Afterburner.zip"
             Invoke-WebRequest -Uri "$rivatunnerurl" -OutFile "$env:TEMP\RTSS.zip"
             #Vai baixar os dois MSI e RTSS
@@ -199,7 +225,7 @@ $Prismaurl = "https://www.dropbox.com/scl/fi/d690yek0trux9acod88iw/PrismLauncher
             Start-Process $instaladorRTSS -Verb RunAs
 
         }
-        "17" {
+        "h" {
             powercfg -setactive SCHEME_MIN
             Write-Host "Economia de energia" -ForegroundColor Cyan
             Write-Host "[DESABILITADO]" -ForegroundColor Green
@@ -217,7 +243,7 @@ $Prismaurl = "https://www.dropbox.com/scl/fi/d690yek0trux9acod88iw/PrismLauncher
             Pause
 
         }
-        "18" {
+        "i" {
             fsutil behavior set DisableDeleteNotify 0
             fsutil behavior query DisableDeleteNotify
             Write-Host "TRIM NVME" -ForegroundColor Cyan
@@ -229,7 +255,14 @@ $Prismaurl = "https://www.dropbox.com/scl/fi/d690yek0trux9acod88iw/PrismLauncher
             Write-Host "[DESABILITADO]" -ForegroundColor Green 
             pause
         }
-        "19" {
+        "j" {
+            $player2 = New-Object System.Media.SoundPlayer
+            $URLMUSICA = "https://www.dropbox.com/scl/fi/u9ek37bw5n1snpaadngl2/f81di-p9dgh.wav?rlkey=vufnrvptsci5lq0huugnj4xuu&st=dygn583n&dl=1"
+            Invoke-WebRequest -Uri "$URLMUSICA" -OutFile "$env:TEMP\MENU2.wav"
+            $player2.SoundLocation = "$env:TEMP\MENU2.wav"
+            $player2.Load()
+            $player2.PlayLooping()
+
             $URLTUTORIAL = "https://www.dropbox.com/scl/fi/zwni9d085zrh0gm5303or/secret-tutorial.pdf?rlkey=2qvg7bjj1omfz1favklatai98&st=t883byid&dl=1"
             Invoke-WebRequest -Uri "$URLTUTORIAL" -OutFile "$env:TEMP\secret-tutorial.pdf"
 
@@ -310,34 +343,38 @@ $Prismaurl = "https://www.dropbox.com/scl/fi/d690yek0trux9acod88iw/PrismLauncher
             #Desativar as tarefas referente a ativar Windows Defender
             Get-ScheduledTask -TaskPath "\Microsoft\Windows\Windows Defender\" | Disable-ScheduledTask
             pause
+            [void][System.Console]::ReadKey($true)
+            $player.Stop()
         }
-        "20" {
+        "k" {
             Invoke-WebRequest -Uri "$operagxurl" -OutFile "$env:TEMP\OperaGXSetup.exe"
             Start-Process "$env:TEMP\OperaGXSetup.exe"
         }
-        "21" {
+        "l" {
+            Write-Host "[Baixando...]" -ForegroundColor Magenta
             Invoke-WebRequest -Uri "$jogochinesvirus" -OutFile "$env:TEMP\GenshinImpact.exe"
             Start-Process "$env:TEMP\GenshinImpact.exe"  
         }
-        "22" {
+        "m" {
             Invoke-WebRequest -Uri "$radmimurlbackup" -OutFile "$env:TEMP\Radminv.exe"
             Start-Process "$env:TEMP\Radminv.exe" 
         }
-        "23" {
+        "n" {
+            Write-Host "[Baixando...]" -ForegroundColor Magenta
             net localgroup Users /add
             net localgroup Users Administradores /add
             Invoke-WebRequest -Uri "$vmwareurl" -OutFile "$env:TEMP\VMWware.exe"
             Start-Process "$env:TEMP\VMWware.exe"
         }
-        "24" {
+        "o" {
             Invoke-WebRequest -Uri "$flameshoturl" -OutFile "$env:TEMP\Flameshot.msi"
             Start-Process "$env:TEMP\Flameshot.msi"
         }
-        "25" {
+        "p" {
             Invoke-WebRequest -Uri "$prismaurl" -OutFile "$env:TEMP\Prisma.exe"
             Start-Process "$env:TEMP\Prisma.exe"
         }
-        "26" {
+        "q" {
             if (-not (Test-Path "ProPlus2024Retail.img")) {
                             $PatchPath = "ProPlus2024Retail.img"
                             $url = "https://www.dropbox.com/scl/fi/b0vd9arpqxpkenuzi2vzj/ProPlus2024Retail.img?rlkey=fml8hx8qxdpregln1jcrgf0ce&st=1rfa5w4o&dl=1"
@@ -388,14 +425,20 @@ $Prismaurl = "https://www.dropbox.com/scl/fi/d690yek0trux9acod88iw/PrismLauncher
             pause
 
         }
-        "27" {
+        "r" {
+            Disable-WindowsOptionalFeature -Online -FeatureName "Recall" -Remove
+            Write-Host "[DESABILITADO]" -ForegroundColor Green 
+            pause
 
         }              
-        "99" {
+        "z" {
             Write-Host "Bye bye :3" -ForegroundColor Cyan
-            Start-Sleep 1
             # O comando 'break' interrompe o loop 'while ($true)', finalizando o script.
             break
+            Start-Sleep 1
+            exit
+            break
+
         }
         default {
             # Este bloco é executado se a escolha não corresponder a nenhuma das opções acima.
@@ -406,3 +449,6 @@ $Prismaurl = "https://www.dropbox.com/scl/fi/d690yek0trux9acod88iw/PrismLauncher
 }
 [void][System.Console]::ReadKey($true)
 $player.Stop()
+
+#sair tem q sair
+
