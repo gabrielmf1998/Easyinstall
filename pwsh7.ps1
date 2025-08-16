@@ -2,7 +2,7 @@
 Write-Host "Power Shell 7.5" -ForegroundColor Magenta
 Write-Host "1 | Instalar"
 Write-Host "2 | Sair"
-$escolha = Read-Host "Digite uma opção "
+$escolha = Read-Host
     switch ($escolha) {
         "1" {
             $installerPath = "$env:TEMP\PowerShell-7.5.2-win-x64.exe"
