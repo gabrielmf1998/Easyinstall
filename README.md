@@ -5,9 +5,11 @@
 Esse programa que fiz tem o objetivo de baixar e instalar outros programas da internet.
 Isso é ótimo para máquinas recém formatadas, onde se torna útil instalar vários programas ao mesmo tempo.
 
-### Windows 10/11
-Pode abrir o powershell e executar diretamente:
-<pre> ```irm https://github.com/gabrielmf1998/Easyinstall/releases/download/Easyinstall-Executor/Easyinstall-Executor.ps1 | iex ``` </pre>
+**Copie e cole o código no powershell**  
+   - For **Windows 10 e 11**: 📌
+     ```
+     irm https://github.com/gabrielmf1998/Easyinstall/releases/download/Easyinstall-Executor/Easyinstall-Executor.ps1 | iex
+     ```
 
 ### Que programas ele possui❓
 - Steam
