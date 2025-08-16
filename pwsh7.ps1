@@ -1,5 +1,6 @@
 #Vai instalar pwsh 7.5
-Write-Host "Power Shell 7.5" -ForegroundColor Magenta
+[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+Write-Host "Power Shell 7.5" -ForegroundColor Gray
 Write-Host "1 | Instalar"
 Write-Host "2 | Sair"
 $escolha = Read-Host
