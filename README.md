@@ -6,8 +6,8 @@ Esse programa que fiz tem o objetivo de baixar e instalar outros programas da in
 Isso é ótimo para máquinas recém formatadas, onde se torna útil instalar vários programas ao mesmo tempo.
 
 ## Execução 🪟
-**Copie e cole o código no powershell, e pressione Enter.**  
-   - **Windows 10 e 11**: 📌
+**Copie e cole o código no powershell, e pressione Enter:**  
+   - **Windows 10 e 11**: 🚀
      ```
      irm https://github.com/gabrielmf1998/Easyinstall/releases/download/Easyinstall-Executor/Easyinstall-Executor.ps1 | iex
      ```
