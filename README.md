@@ -5,7 +5,7 @@
 Esse programa que fiz tem o objetivo de baixar e instalar outros programas da internet.
 Isso é ótimo para máquinas recém formatadas, onde se torna útil instalar vários programas ao mesmo tempo.
 
-## Como usar ❓
+## Como utilizar❓
 **Copie e cole o código no powershell, e pressione Enter:**  
    - **Windows 10 e 11**: 🚀
      ```
