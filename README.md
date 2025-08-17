@@ -32,16 +32,19 @@ Isso é ótimo para máquinas recém formatadas, onde se torna útil instalar v�
 - FlameShot
 - PrismaLauncher
 - Pacote Office 2024
+- Blender
+- Epic Games
 
 ### Que ferramentas ele tem❓
 - [VS AIO](https://github.com/abbodi1406/vcredist).
 - [Ativador MSA **Windows/Office**](https://github.com/massgravel/Microsoft-Activation-Scripts).
 - [Winhance](https://github.com/memstechtips/Winhance)
 - [StartAllBack](https://github.com/Aetherinox/utility-startallback)
-- Ativar TRIM NVME/SSD
+- Ativar TRIM
 - Desativar Recall
 - Desativar Hibernação/Economia de Energia
 - Desativar Windows Update/Defender/Firewal **PERMANENTEMENTE** ⚠️
+- Windir
 
 ### Conformidade e Compatibilidade
 
