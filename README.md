@@ -36,8 +36,8 @@ Isso é ótimo para máquinas recém formatadas, onde se torna útil instalar v�
 - Epic Games
 
 ### Que ferramentas ele tem❓
-- [VS AIO](https://github.com/abbodi1406/vcredist).
-- [Ativador MSA **Windows/Office**](https://github.com/massgravel/Microsoft-Activation-Scripts).
+- [VS AIO](https://github.com/abbodi1406/vcredist)
+- [Ativador MSA **Windows/Office**](https://github.com/massgravel/Microsoft-Activation-Scripts)
 - [Winhance](https://github.com/memstechtips/Winhance)
 - [StartAllBack](https://github.com/Aetherinox/utility-startallback)
 - Ativar TRIM
