@@ -51,8 +51,3 @@ Isso é ótimo para máquinas recém formatadas, onde se torna útil instalar v�
 - Scripts escritos em PowerShell 5.1
 - Apenas Windows 10/11+ ou Server 2022/2025+
 
-### Conversão Executável
-
-- Convertíveis em `.exe`
-- Ferramenta recomendada: [ps2exe](https://github.com/MScholtes/PS2EXE).
-- Porém na parte de Releases, já se encontra a ultima versão.
