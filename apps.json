@@ -1,0 +1,10 @@
+{
+  "7zip": {
+    "display": "7-Zip",
+    "fileName": "7zip.exe",
+    "urls": [
+      "https://www.7-zip.org/a/7z2405-x64.exe",
+      "https://www.dropbox.com/scl/fi/mxzy930l435b2nekh7jb3/7zip.exe?rlkey=vlfa2ewujvoejrjjsnim233xo&st=8kci0vmd&dl=1"
+    ]
+  }
+}
