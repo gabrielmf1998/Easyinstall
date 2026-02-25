@@ -1,6 +1,6 @@
 ## EasyInstall 🟪
 
-![Texto alternativo](https://i.ibb.co/kCG7xyw/Captura-de-tela-2025-08-02-195056.png)
+![Texto alternativo](https://i.ibb.co/TjHMssd/Screenshot-1.png)
 
 Esse programa que fiz tem o objetivo de facilitar a vida de um Analista de TI que constantemente precisa de ferrmentas Windows, Instalar programas, e dar manutenção para máquina Windows 11 recém formatas.
 Útil para instalar vários programas ao mesmo tempo.
