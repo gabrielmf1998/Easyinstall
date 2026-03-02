@@ -34,7 +34,6 @@ Esse programa que fiz tem o objetivo de facilitar a vida de um Analista de TI qu
 - [VS AIO](https://github.com/abbodi1406/vcredist)
 - [Ativador MSA **Windows/Office**](https://github.com/massgravel/Microsoft-Activation-Scripts)
 - [Winhance](https://github.com/memstechtips/Winhance)
-- [StartAllBack](https://github.com/Aetherinox/utility-startallback)
 - Sincronizar Horario NTP (Já ajusta com o ip do NIC Brasil)
 - Ativar TRIM
 - Desativar Recall
