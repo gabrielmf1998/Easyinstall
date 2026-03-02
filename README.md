@@ -42,7 +42,7 @@ Esse programa que fiz tem o objetivo de facilitar a vida de um Analista de TI qu
 - Ferrametas Nativas do Windows
 - DDUCleanUpNvidia
 - Desabilitar Gaming Features (Arruma Problemas no game Vrchat)
-- Remover IA/Bloatware W11 (Em faze de Testes, porém
+- Remover IA/Bloatware W11 (Em faze de Testes, mas pode utilizar e validar se removeu tudo)
   
 
 ### Conformidade e Compatibilidade
