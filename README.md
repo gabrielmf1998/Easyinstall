@@ -6,10 +6,10 @@ Esse programa que fiz tem o objetivo de facilitar a vida de um Analista de TI qu
 Útil para instalar vários programas ao mesmo tempo.
 
 ## Como utilizar❓
-**Copie e cole o código no powershell, e pressione Enter:**  
+**Faça download do script em Releases, faça extração do zip e execute:**  
    - **Windows 10 e 11**: 🚀
      ```
-     irm https://github.com/gabrielmf1998/Easyinstall/releases/download/Easyinstall-Executor/Easyinstall.ps1 | iex
+     Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass -Force .\Easyinstall.ps1
      ```
 
 ### Que programas ele possui❓
