@@ -6,10 +6,10 @@ Esse programa que fiz tem o objetivo de facilitar a vida de um Analista de TI qu
 Útil para instalar vários programas ao mesmo tempo.
 
 ## Como utilizar❓
-**Faça download do script em Releases, faça extração do zip e execute:**  
+**Faça download do script em Releases, caso o arquivo vá para a pasta Downloads, execute:**  
    - **Windows 10 e 11**: 🚀
      ```
-     Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass -Force .\Easyinstall.ps1
+     powershell -ExecutionPolicy Bypass -File "$env:USERPROFILE\Downloads\Easyinstall.ps1"
      ```
 
 ### Que programas ele possui❓
