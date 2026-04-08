@@ -2,7 +2,7 @@
 
 ![Texto alternativo](https://i.ibb.co/TjHMssd/Screenshot-1.png)
 
-Esse programa que fiz tem o objetivo de facilitar a vida de um Analista de TI que constantemente precisa de ferrmentas Windows, Instalar programas, e dar manutenção para máquina Windows 11 recém formatas.
+Esse programa que fiz tem o objetivo de facilitar a vida de um Analista de TI que constantemente precisa de ferramentas Windows, Instalar programas, e dar manutenção para máquina Windows 11 recém formatas.
 Útil para instalar vários programas ao mesmo tempo.
 
 ## Como utilizar❓
