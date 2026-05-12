@@ -298,6 +298,7 @@ function Start-EasyInstallTui {
         (New-EasyInstallMenuItem -Label 'Google Chrome' -Description 'Instalar navegador' -Action { Install-GoogleChromeSetup }),
         (New-EasyInstallMenuItem -Label 'Discord' -Description 'Instalar comunicador' -Action { Install-Discord }),
         (New-EasyInstallMenuItem -Label 'Telegram' -Description 'Instalar mensageiro' -Action { Install-Telegram }),
+        (New-EasyInstallMenuItem -Label 'PowerShell 7' -Description 'Instalar/atualizar versao mais recente via winget' -Action { Install-PowerShell7LatestWinget }),
         (New-EasyInstallMenuItem -Label 'Todos' -Description 'Instalar todos os programas desta lista' -Action { Install-AllProgramas })
     )
 

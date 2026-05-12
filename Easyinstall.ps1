@@ -19,6 +19,41 @@ function Test-EasyInstallRepositoryRoot {
     )
 }
 
+function Invoke-EasyInstallDownloadWithAnimation {
+    param(
+        [Parameter(Mandatory)][string]$Uri,
+        [Parameter(Mandatory)][string]$OutFile
+    )
+
+    $frames = @('|', '/', '-', '\')
+    $job = Start-Job -ScriptBlock {
+        param($DownloadUri, $DownloadPath)
+
+        $ProgressPreference = 'SilentlyContinue'
+        try { [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12 } catch {}
+        Invoke-WebRequest -Uri $DownloadUri -OutFile $DownloadPath -UseBasicParsing -ErrorAction Stop
+    } -ArgumentList $Uri, $OutFile
+
+    $oldCursor = $true
+    try { $oldCursor = [Console]::CursorVisible; [Console]::CursorVisible = $false } catch {}
+
+    try {
+        $i = 0
+        while ($job.State -eq 'Running') {
+            $frame = $frames[$i % $frames.Count]
+            Write-Host ("`r{0} Baixando EasyInstall para a pasta TEMP do Windows..." -f $frame) -ForegroundColor Blue -NoNewline
+            Start-Sleep -Milliseconds 150
+            $i++
+        }
+
+        Receive-Job -Job $job -ErrorAction Stop | Out-Null
+        Write-Host "`rOK Download concluido na pasta TEMP do Windows.           " -ForegroundColor Blue
+    } finally {
+        Remove-Job -Job $job -Force -ErrorAction SilentlyContinue
+        try { [Console]::CursorVisible = $oldCursor } catch {}
+    }
+}
+
 function Get-EasyInstallRepositoryFromGitHub {
     param(
         [Parameter(Mandatory)][string]$Repository,
@@ -27,8 +62,9 @@ function Get-EasyInstallRepositoryFromGitHub {
 
     $safeRepositoryName = ($Repository -replace '[\\/:*?"<>|]', '_')
     $safeBranchName = ($Branch -replace '[\\/:*?"<>|]', '_')
-    $downloadRoot = Join-Path $env:TEMP ("EasyInstall_{0}_{1}" -f $safeRepositoryName, $safeBranchName)
-    $zipPath = Join-Path $env:TEMP ("EasyInstall_{0}_{1}.zip" -f $safeRepositoryName, $safeBranchName)
+    $windowsTemp = [IO.Path]::GetTempPath()
+    $downloadRoot = Join-Path $windowsTemp ("EasyInstall_{0}_{1}" -f $safeRepositoryName, $safeBranchName)
+    $zipPath = Join-Path $windowsTemp ("EasyInstall_{0}_{1}.zip" -f $safeRepositoryName, $safeBranchName)
     $zipUrl = "https://github.com/$Repository/archive/refs/heads/$Branch.zip"
 
     if (Test-Path -LiteralPath $downloadRoot) {
@@ -37,8 +73,7 @@ function Get-EasyInstallRepositoryFromGitHub {
 
     New-Item -Path $downloadRoot -ItemType Directory -Force | Out-Null
 
-    Write-Host "Baixando EasyInstall do GitHub..." -ForegroundColor Cyan
-    Invoke-WebRequest -Uri $zipUrl -OutFile $zipPath -UseBasicParsing
+    Invoke-EasyInstallDownloadWithAnimation -Uri $zipUrl -OutFile $zipPath
 
     Expand-Archive -LiteralPath $zipPath -DestinationPath $downloadRoot -Force
     Remove-Item -LiteralPath $zipPath -Force -ErrorAction SilentlyContinue

@@ -522,6 +522,36 @@ if (-not $ok) {
   Write-Host "[OK]" -ForegroundColor Green
 }
 
+function Install-PowerShell7LatestWinget {
+  Write-Host "[Instalando/atualizando PowerShell 7 mais recente via winget...]" -ForegroundColor Blue
+
+  $winget = Get-Command winget.exe -ErrorAction SilentlyContinue
+  if (-not $winget) {
+    throw "winget.exe nao encontrado. Instale/atualize o App Installer pela Microsoft Store."
+  }
+
+  $pwsh = Get-Command pwsh.exe -ErrorAction SilentlyContinue
+  if ($pwsh) {
+    Invoke-Winget -Args @(
+      'upgrade',
+      '--id', 'Microsoft.PowerShell',
+      '-e',
+      '--accept-source-agreements',
+      '--accept-package-agreements',
+      '--silent'
+    ) -SuccessName 'PowerShell 7'
+  } else {
+    Invoke-Winget -Args @(
+      'install',
+      '--id', 'Microsoft.PowerShell',
+      '-e',
+      '--accept-source-agreements',
+      '--accept-package-agreements',
+      '--silent'
+    ) -SuccessName 'PowerShell 7'
+  }
+}
+
 #VAI INSTALAR TODOS
 function Install-AllProgramas {
   Install-7Zip
@@ -532,6 +562,7 @@ function Install-AllProgramas {
   Install-GoogleChromeSetup
   Install-Discord
   Install-Telegram
+  Install-PowerShell7LatestWinget
   Write-Host "Todos os programas foram baixados e executados em segundo plano!"
   Start-Sleep 2
 }
