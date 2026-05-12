@@ -1,15 +1,15 @@
-## EasyInstall 🟪
+## EasyInstall
 
-![Texto alternativo](https://i.ibb.co/TjHMssd/Screenshot-1.png)
+![Texto alternativo](https://i.ibb.co/9kM2dWB4/Screenshot-2026-05-12-164150.png)
 
 Esse programa que fiz tem o objetivo de facilitar a vida de um Analista de TI que constantemente precisa de ferramentas Windows, Instalar programas, e dar manutenção para máquina Windows 11 recém formatas.
 Útil para instalar vários programas ao mesmo tempo.
 
 ## Como utilizar❓
 **Faça download do script em Releases, caso o arquivo vá para a pasta Downloads, execute:**  
-   - **Windows 10 e 11**: 🚀
+   - **Apenas Windows 11**: 🚀
      ```
-     powershell -ExecutionPolicy Bypass -File "$env:USERPROFILE\Downloads\Easyinstall.ps1"
+     irm https://raw.githubusercontent.com/gabrielmf1998/Easyinstall/main/Easyinstall.ps1 | iex
      ```
 
 ### Que programas ele possui❓
@@ -21,6 +21,7 @@ Esse programa que fiz tem o objetivo de facilitar a vida de um Analista de TI qu
 - Google Chrome
 - Discord
 - Telegram
+- PowerShell 7+
 
 ### Ele instala launchers de Games também❓
 ### Sim (a pedido de amigos) ❤️
@@ -40,6 +41,7 @@ Esse programa que fiz tem o objetivo de facilitar a vida de um Analista de TI qu
 - Desativar Hibernação/Economia de Energia
 - [CTT Winutil](https://github.com/ChrisTitusTech/winutil)
 - Ferrametas Nativas do Windows
+- Drivers GPU
 - DDUCleanUpNvidia
 - Desabilitar Gaming Features (Arruma Problemas no game Vrchat)
 - Remover IA/Bloatware W11 (Em faze de Testes, mas pode utilizar e validar se removeu tudo)
