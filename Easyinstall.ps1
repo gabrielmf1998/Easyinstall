@@ -10,6 +10,18 @@ Set-StrictMode -Version Latest
 
 try { [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12 } catch {}
 
+function Enable-EasyInstallExecutionPolicyForCurrentProcess {
+    try {
+        $env:PSExecutionPolicyPreference = 'Bypass'
+
+        if ((Get-ExecutionPolicy -Scope Process -ErrorAction SilentlyContinue) -ne 'Bypass') {
+            Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass -Force -ErrorAction Stop
+        }
+    } catch {
+        Write-Host ("Aviso: nao consegui ajustar a politica de execucao deste processo: {0}" -f $_.Exception.Message) -ForegroundColor Blue
+    }
+}
+
 function Test-EasyInstallRepositoryRoot {
     param([Parameter(Mandatory)][string]$Path)
 
@@ -90,6 +102,8 @@ function Get-EasyInstallRepositoryFromGitHub {
 }
 
 $script:EasyInstallRoot = $null
+
+Enable-EasyInstallExecutionPolicyForCurrentProcess
 
 if (-not [string]::IsNullOrWhiteSpace($PSScriptRoot) -and (Test-EasyInstallRepositoryRoot -Path $PSScriptRoot)) {
     $script:EasyInstallRoot = $PSScriptRoot
